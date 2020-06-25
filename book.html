@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Loading...</title>
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        <style>
+            #location {
+                display: none;
+            }
+            input {
+                margin-bottom: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <form name="main" onsubmit="return validateForm();" action="https://ml-api.uk.ms/testthing" method="POST">
+            <input id="location" type="text" name="location">
+            <label>People:</label><br/><input type="number" name="people"><br/>
+            <label>Date Start:</label><br/><input type="date" name="start"><br/>
+            <label>Date End:</label><br/><input type="date" name="end">
+            <br/>
+            <input type="submit" value="Submit">
+        </form>
+        <script>
+            function set() {
+                const url = new URLSearchParams(window.location.search);
+                const loc = url.get('l');
+                const element = document.getElementById("location");
+                element.value = loc;
+            }
+            set();
+
+            function validateForm() {
+                var form = document.forms["main"];
+                var people = form["people"].value;
+                if(!people) {
+                    alert("You did not enter the number of people visiting")
+                    return false;
+                }
+                if(people <= 0 || people > 10) {
+                    alert("Number of people too high or low, must be 1-10");
+                    return false;
+                }
+                var start = form["start"].value;
+                if(!start) {
+                    alert("You did not enter a date on which the visit should start");
+                    return false;
+                }
+                var today = new Date();
+                if(new Date(start) < today) {
+                    alert("You are not a Time Lord!");
+                    return false;
+                }
+                var end = form["end"].value;
+                if(!end) {
+                    alert("You did not enter a date on which the visit should conclude");
+                    return false;
+                }
+                var endDate = new Date(end);
+                if(endDate < start) {
+                    alert("You cannot end a visit before it has begun!");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>

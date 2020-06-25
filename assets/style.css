@@ -1,0 +1,36 @@
+h1, h2, h3, h4 {
+    text-align: center;
+}
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+.container {
+    border-left: 2px solid blue;
+    padding-left: 3px;
+}
+.booking {
+    border-left-color: red !important;
+}
+.container h3 {
+    text-align: left;
+    margin-bottom: 2px;
+    border-bottom: 2px solid black;
+}
+.container p {
+    margin-top: 0;
+}
+.floater {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    background-color: gold;
+    border: 1px solid black;
+    width: 3%;
+    height: 1%;
+    min-width: 70px;
+    min-height: 20px;
+    text-align: center;
+    font-size: larger;
+}
